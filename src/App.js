@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
-import Form from '@rjsf/core';
-import { INITIAL_FORM, INITIAL_FORM_UI } from './formconfig/formdata';
-import validator from '@rjsf/validator-ajv8';
+import {INITIAL_FORM_UI, INITIAL_FORM} from "./formconfig/formdata.js"
+import InitialForm from "./formcomponents/initialForm.js";
 
 const App = () => {
-  const [formData, setFormData] = React.useState(null);
+  const [formConfig, setFormConfig] = useState({});
+
+  const handlePageFlip = (pageCount) => {
+
+  }
+
   return (
     <div className='container'>
-      <Form
+      <InitialForm
+        formKey="initialForm"
         uiSchema={INITIAL_FORM_UI}
         schema={INITIAL_FORM}
-        formData={formData}
-        onChange={(e) => setFormData(e.formData)}
-        validator={validator}
-      >
-        <div className='row justify-content-end'>
-            <button className='submit col-3 btn' type="submit">Submit</button>
-        </div>
-      </Form>
+        handlePageFlip={handlePageFlip}
+      />
     </div>
   );
 };

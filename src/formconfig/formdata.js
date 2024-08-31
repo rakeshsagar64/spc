@@ -1,10 +1,9 @@
 export const INITIAL_FORM = {
-    "title": "Stock Purchase Check List",
-    "description": "This is a list of questions to know answers to before purchase the stock",
+    "title": "Initial Form",
+    "description": "Stock to be bought",
     "type": "object",
     "required": [
-      "stockName",
-      "lastName"
+      "stockName"
     ],
     "properties": {
       "stockName": {
