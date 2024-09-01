@@ -4,22 +4,32 @@ import { STOCK_NAME_UI, STOCK_NAME } from "./formconfig/stockName.js"
 import { SECTORAL_ANALYSIS, SECTORAL_ANALYSIS_UI } from "./formconfig/sectoralAnalysis.js"
 import { BROADER_MARKET, BROADER_MARKET_UI } from "./formconfig/broaderMarketAnalysis.js"
 import { TIME_FRAME, TIME_FRAME_UI } from "./formconfig/timeFrame.js"
+import { SHORT_TERM, SHORT_TERM_UI } from "./formconfig/shortTerm.js"
+import { CORE_PORTFOLIO, CORE_PORTFOLIO_UI } from "./formconfig/corePortfolio.js"
+import { SMALL_CAP, SMALL_CAP_UI } from "./formconfig/smallCap.js"
+
 
 import InitialForm from "./formcomponents/initialForm.js";
 
 const App = () => {
+
   const [pageCount, setPageCount] = useState(1);
   const [isLongTerm, setIsLongTerm] = useState();
   const [isLargeCap, setIsLargeCap] = useState();
+
   const handlePageFlip = (pageCount) => {
     setPageCount(pageCount);
     if(pageCount === 4){
       let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
       if(stockPurchase && stockPurchase.timeFrame && stockPurchase.timeFrame.isLongTerm === "Yes"){
         setIsLongTerm(true);
+      } else {
+        setIsLongTerm(false);
       }
       if(stockPurchase && stockPurchase.sectoralAnalysis && stockPurchase.sectoralAnalysis.marketCap === "Large Cap"){
         setIsLargeCap(true);
+      }else {
+        setIsLargeCap(false);
       }
     }
   }
@@ -66,8 +76,8 @@ const App = () => {
         <InitialForm
           pageCount="5"
           formKey="corePortfolio"
-          uiSchema={TIME_FRAME_UI}
-          schema={TIME_FRAME}
+          uiSchema={CORE_PORTFOLIO_UI}
+          schema={CORE_PORTFOLIO}
           handlePageFlip={handlePageFlip}
         />
       )}
@@ -75,8 +85,8 @@ const App = () => {
         <InitialForm
           pageCount="5"
           formKey="shortTerm"
-          uiSchema={TIME_FRAME_UI}
-          schema={TIME_FRAME}
+          uiSchema={SHORT_TERM_UI}
+          schema={SHORT_TERM}
           handlePageFlip={handlePageFlip}
         />
       )}
@@ -84,8 +94,8 @@ const App = () => {
         <InitialForm
           pageCount="6"
           formKey="smallCapAnalysis"
-          uiSchema={TIME_FRAME_UI}
-          schema={TIME_FRAME}
+          uiSchema={SMALL_CAP_UI}
+          schema={SMALL_CAP}
           handlePageFlip={handlePageFlip}
         />
       )}

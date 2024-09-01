@@ -9,7 +9,14 @@
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-
+.field{
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.field-description{
+  color: grey;
+  font-size: 12px;
+}
 .submit{
   margin:1rem;
 }

@@ -3,7 +3,7 @@ import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
 
 function InitialForm(props) {
-  const FINAL_PAGE = "5";
+  const FINAL_PAGE = "6";
   const [formData, setFormData] = React.useState(null);
 
   const handleSubmit = () => {
