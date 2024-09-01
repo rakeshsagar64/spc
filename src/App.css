@@ -36,3 +36,17 @@
 #root__title{
   color: darkred;
 }
+
+.dataHeading{
+  margin-top: 2rem;
+  border-bottom: 3px solid #1b2c4a;
+}
+
+.final{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.finalBox{
+  margin-top: 1rem;
+}

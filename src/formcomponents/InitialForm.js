@@ -12,12 +12,16 @@ function InitialForm(props) {
     setFormData(stockPurchase[props.formKey]);
   }, []);
 
-  const handleSubmit = () => {
+  const handleNext = () => {
     let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
     stockPurchase[props.formKey] = formData
     window.localStorage.setItem("stockPurchase", JSON.stringify(stockPurchase));
     let nxt = props.pageCount
     props.handlePageFlip(++nxt);
+  }
+
+  const handleSubmit=()=>{
+    props.handlePageFlip(42);
   }
 
   const handlePrevClick = () => {
@@ -42,12 +46,13 @@ function InitialForm(props) {
             <button
               className='submit col-3 btn'
               type="button"
+              onClick={handleSubmit}
             >Submit</button>
           ) : (
             <button
               className='submit col-3 btn'
-              type="submit"
-              onClick={handleSubmit}
+              type="button"
+              onClick={handleNext}
             >Next</button>
           )}
         </div>

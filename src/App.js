@@ -9,6 +9,7 @@ import { CORE_PORTFOLIO, CORE_PORTFOLIO_UI } from "./formconfig/corePortfolio.js
 import { SMALL_CAP, SMALL_CAP_UI } from "./formconfig/smallCap.js"
 import InitialForm from "./formcomponents/InitialForm.js";
 import Header from './formcomponents/Header.js';
+import Decision from './formcomponents/Decision.js';
 
 const App = () => {
   const [stockName, setStockName] = useState("SPC");
@@ -99,7 +100,7 @@ const App = () => {
             handlePageFlip={handlePageFlip}
           />
         )}
-        {pageCount && pageCount === 6 && !isLargeCap && (
+        {pageCount && pageCount === 6 && (
           <InitialForm
             pageCount="6"
             formKey="smallCapAnalysis"
@@ -107,6 +108,11 @@ const App = () => {
             schema={SMALL_CAP}
             handlePageFlip={handlePageFlip}
           />
+        )}
+        {pageCount && pageCount === 42 && (
+         <Decision 
+         handlePageFlip={handlePageFlip}
+         />
         )}
       </div>
     </>
