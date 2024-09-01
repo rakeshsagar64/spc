@@ -3,14 +3,25 @@ import './App.css';
 import { STOCK_NAME_UI, STOCK_NAME } from "./formconfig/stockName.js"
 import { SECTORAL_ANALYSIS, SECTORAL_ANALYSIS_UI } from "./formconfig/sectoralAnalysis.js"
 import { BROADER_MARKET, BROADER_MARKET_UI } from "./formconfig/broaderMarketAnalysis.js"
+import { TIME_FRAME, TIME_FRAME_UI } from "./formconfig/timeFrame.js"
 
 import InitialForm from "./formcomponents/initialForm.js";
 
 const App = () => {
   const [pageCount, setPageCount] = useState(1);
-
+  const [isLongTerm, setIsLongTerm] = useState();
+  const [isLargeCap, setIsLargeCap] = useState();
   const handlePageFlip = (pageCount) => {
     setPageCount(pageCount);
+    if(pageCount === 4){
+      let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
+      if(stockPurchase && stockPurchase.timeFrame && stockPurchase.timeFrame.isLongTerm === "Yes"){
+        setIsLongTerm(true);
+      }
+      if(stockPurchase && stockPurchase.sectoralAnalysis && stockPurchase.sectoralAnalysis.marketCap === "Large Cap"){
+        setIsLargeCap(true);
+      }
+    }
   }
 
   return (
@@ -42,6 +53,43 @@ const App = () => {
           handlePageFlip={handlePageFlip}
         />
       )}
+      {pageCount && pageCount === 4 && (
+        <InitialForm
+          pageCount="4"
+          formKey="timeFrame"
+          uiSchema={TIME_FRAME_UI}
+          schema={TIME_FRAME}
+          handlePageFlip={handlePageFlip}
+        />
+      )}
+      {pageCount && pageCount === 5 && isLongTerm && (
+        <InitialForm
+          pageCount="5"
+          formKey="corePortfolio"
+          uiSchema={TIME_FRAME_UI}
+          schema={TIME_FRAME}
+          handlePageFlip={handlePageFlip}
+        />
+      )}
+      {pageCount && pageCount === 5 && !isLongTerm && (
+        <InitialForm
+          pageCount="5"
+          formKey="shortTerm"
+          uiSchema={TIME_FRAME_UI}
+          schema={TIME_FRAME}
+          handlePageFlip={handlePageFlip}
+        />
+      )}
+      {pageCount && pageCount === 6 && !isLargeCap && (
+        <InitialForm
+          pageCount="6"
+          formKey="smallCapAnalysis"
+          uiSchema={TIME_FRAME_UI}
+          schema={TIME_FRAME}
+          handlePageFlip={handlePageFlip}
+        />
+      )}
+  
     </div>
   );
 };

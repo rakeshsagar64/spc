@@ -3,7 +3,7 @@ import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
 
 function InitialForm(props) {
-  const FINAL_PAGE = "3";
+  const FINAL_PAGE = "5";
   const [formData, setFormData] = React.useState(null);
 
   const handleSubmit = () => {
@@ -28,15 +28,14 @@ function InitialForm(props) {
       >
         <div className='row justify-content-end'>
           {props.pageCount && props.pageCount !== "1" && (<button
-            className='submit col-3 btn'
+            className='submit col-3 btn btn-cancel'
             type="button"
             onClick={handlePrevClick}
           >Prev</button>)}
           {props.pageCount && props.pageCount === FINAL_PAGE ? (
             <button
               className='submit col-3 btn'
-              type="submit"
-              onClick={handleSubmit}
+              type="button"
             >Submit</button>
           ) : (
             <button
