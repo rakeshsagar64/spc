@@ -20,3 +20,19 @@
 .submit{
   margin:1rem;
 }
+
+.header{
+  padding:0.5rem 1rem;
+  background-color: #1b2c4a;
+  color: whitesmoke;
+  font-weight: bold;
+
+}
+
+.spc{
+  margin-top:5rem;
+}
+
+#root__title{
+  color: darkred;
+}

@@ -1,9 +1,10 @@
 import React from 'react'
 import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
+import { FINAL_PAGE } from '../formconfig/stockName';
 
 function InitialForm(props) {
-  const FINAL_PAGE = "6";
+  
   const [formData, setFormData] = React.useState(null);
 
   const handleSubmit = () => {
