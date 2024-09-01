@@ -17,7 +17,7 @@ const App = () => {
     <div className='container'>
       {pageCount && pageCount === 1 && (
         <InitialForm
-          nextPage="1"
+          pageCount="1"
           formKey="initialForm"
           uiSchema={STOCK_NAME_UI}
           schema={STOCK_NAME}
@@ -26,7 +26,7 @@ const App = () => {
       )}
       {pageCount && pageCount === 2 && (
         <InitialForm
-          nextPage="2"
+          pageCount="2"
           formKey="broaderMarket"
           uiSchema={BROADER_MARKET_UI}
           schema={BROADER_MARKET}
@@ -35,7 +35,7 @@ const App = () => {
       )}
       {pageCount && pageCount === 3 && (
         <InitialForm
-          nextPage="3"
+          pageCount="3"
           formKey="sectoralAnalysis"
           uiSchema={SECTORAL_ANALYSIS_UI}
           schema={SECTORAL_ANALYSIS}
