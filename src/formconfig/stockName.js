@@ -1,4 +1,4 @@
-export const INITIAL_FORM = {
+export const STOCK_NAME = {
     "title": "Initial Form",
     "description": "Stock to be bought",
     "type": "object",
@@ -48,7 +48,7 @@ export const INITIAL_FORM = {
     }
   };
 
-export const INITIAL_FORM_UI = {
+export const STOCK_NAME_UI = {
     "stockName": {
       "ui:autofocus": true,
       "ui:emptyValue": "",
