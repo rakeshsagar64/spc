@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
 import { FINAL_PAGE } from '../formconfig/stockName';
@@ -6,6 +6,11 @@ import { FINAL_PAGE } from '../formconfig/stockName';
 function InitialForm(props) {
   
   const [formData, setFormData] = React.useState(null);
+
+  useEffect(()=> {
+    let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
+    setFormData(stockPurchase[props.formKey]);
+  }, []);
 
   const handleSubmit = () => {
     let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
