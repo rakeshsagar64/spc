@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SPC",
+  "name": "Stock pick checklist",
   "icons": [
     {
       "src": "favicon.ico",
