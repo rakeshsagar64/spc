@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
-import { FINAL_PAGE } from '../formconfig/stockName';
 
 function InitialForm(props) {
-  
+
   const [formData, setFormData] = React.useState(null);
 
-  useEffect(()=> {
+  useEffect(() => {
     let stockPurchase = window.localStorage.getItem("stockPurchase") === null ? {} : JSON.parse(window.localStorage.getItem("stockPurchase"));
     setFormData(stockPurchase[props.formKey]);
   }, []);
@@ -20,7 +19,7 @@ function InitialForm(props) {
     props.handlePageFlip(++nxt);
   }
 
-  const handleSubmit=()=>{
+  const handleSubmit = () => {
     props.handlePageFlip(42);
   }
 
@@ -28,31 +27,33 @@ function InitialForm(props) {
     let prev = props.pageCount
     props.handlePageFlip(--prev);
   }
+  
   return (
     <>
       <Form
         {...props}
         formData={formData}
-        onChange={(e) => setFormData(e.formData)}
         validator={validator}
+        onChange={(e) => setFormData(e.formData)}
       >
         <div className='row justify-content-end'>
-          {props.pageCount && props.pageCount !== "1" && (<button
-            className='submit col-3 btn btn-cancel'
-            type="button"
-            onClick={handlePrevClick}
-          >Prev</button>)}
-          {props.pageCount && props.pageCount === FINAL_PAGE ? (
+          {props.pageCount && props.pageCount !== "1" && (
             <button
-              className='submit col-3 btn'
+              type="button"
+              onClick={handlePrevClick}
+              className='submit col-3 btn btn-cancel'
+            >Prev</button>)}
+          {props.isLastPage ? (
+            <button
               type="button"
               onClick={handleSubmit}
+              className='submit col-3 btn'
             >Submit</button>
           ) : (
             <button
-              className='submit col-3 btn'
               type="button"
               onClick={handleNext}
+              className='submit col-3 btn'
             >Next</button>
           )}
         </div>
