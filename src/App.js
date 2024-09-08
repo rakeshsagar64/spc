@@ -48,10 +48,6 @@ const App = () => {
         isLongTerm={isLongTerm}
       />
       <div className='container spc'>
-        {JSON.stringify(pageCount)}
-        Large Cap: {JSON.stringify(isLargeCap)}
-        Long Term: {JSON.stringify(isLongTerm)}
-
         {pageCount && pageCount === 1 && (
           <InitialForm
             pageCount="1"
